@@ -1,0 +1,16 @@
+name: AusWeis
+version: 1.0
+main: org.ausweis.AusWeis
+api-version: "1.13"
+
+commands:
+  ausweis:
+    description: Main command for AusWeis plugin
+    usage: /<command> reload
+    aliases: [ausw]
+    permission: ausweis.reload
+
+permissions:
+  ausweis.reload:
+    description: Allows reloading the AusWeis configuration
+    default: op

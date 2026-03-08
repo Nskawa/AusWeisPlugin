@@ -1,0 +1,17 @@
+# API URL to check player verification status
+api-url: "https://ausweis.lya.bz/api/check?user={player}"
+
+# Verification page URL to show in kick message
+verify-url: "https://ausweis.lya.bz?user={player}"
+
+# HTTP request timeout in milliseconds
+timeout: 5000
+
+# Debug mode, enables more detailed logs
+debug: false
+
+# Kick message (supports multiple lines and color codes)
+kick-message: "§c⛔ Verification Required\n§7Please visit the following link to verify:\n§b§l{verify-url}\n§7Rejoin the server after verification"
+
+# Async thread pool size
+thread-pool-size: 4
