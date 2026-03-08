@@ -1,6 +1,6 @@
 # AusWeis — Cloudflare Turnstile Human Verification Plugin
 
-[Chinese](https://github.com/ChineseLiyao/AusWeisPlugin/main/README_CN.md)
+[CN]([https://github.com/ChineseLiyao/AusWeisPlugin/main/README_CN.md](https://github.com/ChineseLiyao/AusWeisPlugin/blob/main/README_CN.md)) | [EN](https://github.com/ChineseLiyao/AusWeisPlugin/blob/main/README.md)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Bukkit](https://img.shields.io/badge/Bukkit-1.13+-orange.svg)](https://www.spigotmc.org/)
