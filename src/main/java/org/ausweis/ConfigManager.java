@@ -8,11 +8,11 @@ public class ConfigManager {
     private final JavaPlugin plugin;
     private FileConfiguration config;
 
+    private static final String LANGUAGE = "language";
     private static final String API_URL = "api-url";
     private static final String VERIFY_URL = "verify-url";
     private static final String TIMEOUT = "timeout";
     private static final String DEBUG = "debug";
-    private static final String KICK_MESSAGE = "kick-message";
 
     public ConfigManager(JavaPlugin plugin) {
         this.plugin = plugin;
@@ -22,6 +22,10 @@ public class ConfigManager {
     public void reload() {
         plugin.reloadConfig();
         this.config = plugin.getConfig();
+    }
+
+    public String getLanguage() {
+        return config.getString(LANGUAGE, "en");
     }
 
     public String getApiUrl() {
@@ -39,9 +43,4 @@ public class ConfigManager {
     public boolean isDebug() {
         return config.getBoolean(DEBUG, false);
     }
-
-    public String getKickMessage() {
-        return config.getString(KICK_MESSAGE, "§c⛔ Verification Required\n§7Please visit: §f{verify-url}\n§7Rejoin after verification");
-    }
-
 }

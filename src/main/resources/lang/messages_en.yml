@@ -1,0 +1,5 @@
+kick-title: "§c⛔ Verification Required"
+kick-message: |
+  §7Please visit the following link to verify:
+  §b§l{verify-url}
+  §7Rejoin the server after verification

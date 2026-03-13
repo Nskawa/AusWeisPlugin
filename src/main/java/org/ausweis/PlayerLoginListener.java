@@ -13,6 +13,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 
 import com.google.gson.JsonObject;
@@ -22,10 +24,12 @@ public class PlayerLoginListener implements Listener {
 
     private final AusWeis plugin;
     private final ConfigManager cfg;
+    private final LangManager lang;
 
-    public PlayerLoginListener(AusWeis plugin) {
+    public PlayerLoginListener(AusWeis plugin, ConfigManager cfg, LangManager lang) {
         this.plugin = plugin;
-        this.cfg = plugin.getConfigManager();
+        this.cfg = cfg;
+        this.lang = lang;
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -33,11 +37,19 @@ public class PlayerLoginListener implements Listener {
         Player player = event.getPlayer();
         String playerName = player.getName();
 
+        if (player.hasPermission("ausweis.bypass")) {
+            plugin.getLogger().fine("Player " + playerName + " bypassed verification.");
+            return;
+        }
+
         boolean verified = checkApi(playerName);
         if (!verified) {
             String verifyUrl = cfg.getVerifyUrl().replace("{player}", encode(playerName));
-            String kickMessage = cfg.getKickMessage().replace("{verify-url}", verifyUrl);
-            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, kickMessage);
+            Map<String, String> placeholders = new HashMap<>();
+            placeholders.put("verify-url", verifyUrl);
+            String title = lang.getMessage("kick-title");
+            String message = lang.getMessage("kick-message", placeholders);
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, title + "\n\n" + message);
             if (cfg.isDebug()) {
                 plugin.getLogger().info("Kicked unverified player " + playerName + " with URL: " + verifyUrl);
             }
