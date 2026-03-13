@@ -3,8 +3,8 @@
 [CN](https://github.com/ChineseLiyao/AusWeisPlugin/blob/main/README_CN.md) | [EN](https://github.com/ChineseLiyao/AusWeisPlugin/blob/main/README.md)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Bukkit](https://img.shields.io/badge/Bukkit-1.13+-orange.svg)](https://www.spigotmc.org/)
-[![Paper](https://img.shields.io/badge/Paper-1.21+-yellow.svg)](https://papermc.io/)
+[![Bukkit](https://img.shields.io/badge/Bukkit-1.8+-orange.svg)](https://www.spigotmc.org/)
+[![Paper](https://img.shields.io/badge/Paper-1.8+-yellow.svg)](https://papermc.io/)
 [![Maven](https://img.shields.io/badge/Maven-3.6+-brightgreen.svg)](https://maven.apache.org/)
 
 **AusWeis** is a lightweight Bukkit/Paper plugin that integrates Cloudflare Turnstile to implement human verification before players can join the server, effectively preventing malicious bot attacks. Players are kicked on first login with a verification URL displayed, and can rejoin normally after completing verification on the webpage.
@@ -35,23 +35,25 @@
 ## Configuration File
 
 ```yaml
+# Language file to use (e.g., en, zh). Must correspond to a messages_<lang>.yml file in the lang folder.
+# 使用的语言文件（例如 en, zh）。必须与 lang 文件夹中的 messages_<语言>.yml 文件对应。
+language: "en"
+
 # API URL to check player verification status
+# API 地址，用于检查玩家验证状态
 api-url: "https://ausweis.lya.bz/api/check?user={player}"
 
 # Verification page URL to show in kick message
+# 验证页面地址，踢出时显示
 verify-url: "https://ausweis.lya.bz?user={player}"
 
 # HTTP request timeout in milliseconds
+# HTTP 请求超时时间（毫秒）
 timeout: 5000
 
 # Debug mode, enables more detailed logs
+# 调试模式，开启后会输出更多日志
 debug: false
-
-# Kick message (supports multiple lines and color codes)
-kick-message: "§c⛔ Verification Required\n§7Please visit the following link to verify:\n§b§l{verify-url}\n§7Rejoin the server after verification"
-
-# Async thread pool size
-thread-pool-size: 4
 ```
 
 ---
